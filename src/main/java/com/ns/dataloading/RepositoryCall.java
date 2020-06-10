@@ -111,177 +111,177 @@ public class RepositoryCall {
 
     public void init() {
 
-        List<RunConfig> runConfigList = new ArrayList<>();
-        runConfigList = runconfigmysql.findAll();
-
-        runConfigList.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
-        System.out.println("Run config loaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-
-        List<com.ns.dataloading.entity.RunLog> Runlogmysql = new ArrayList<>();
-        Runlogmysql = runlogrepomysql.findAll();
-
-        Runlogmysql.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
-        System.out.println("Runlogloaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-
-
-        List<com.ns.dataloading.entity.OrmstpOrder> orderlistmysql = new ArrayList<>();
-        orderlistmysql = ordermysql.findAll();
-        orderlistmysql.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
-        System.out.println("Orderloaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-
-        start = 0;
-        currentCount = 0;
-        do {
-            List<com.ns.dataloading.entity.DsmstpDistributor> Distributorlistmysql = dsmstpDistributorRepositorymysql.findDsmstpDistributor(start, limit);
-            currentCount = Distributorlistmysql.size();
-            Distributorlistmysql.parallelStream().forEach(x ->
-            {
-                String query = utils.convertObjectToKeyValueString(x);
-                try {
-                    ResultSet rs = graph.query("rediscegraph", query);
-                } catch (Exception ex) {
-                    System.out.println(ex.toString());
-                }
-            });
-
-            start = start + currentCount;
-            System.out.println("DsmstpDistributor Loaded");
-            System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-        }
-        while (currentCount == limit);
-
-
-        List<com.ns.dataloading.entity.BoqalpBonusQualification> boqalpBonusQualificationListmysql = bonusQualificationRepositorymysql.findAll();
-
-        boqalpBonusQualificationListmysql.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
-
-        System.out.println("BoqalpBonusQualification Loaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-
-
-        List<com.ns.dataloading.entity.FlcmppCompanyConfig> flcmppCompanyConfigListmysql = flcmppCompanyConfigmysql.findAll();
-        flcmppCompanyConfigListmysql.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
-
-        System.out.println("FlcmppCompanyConfig Loaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-
-
-        start = 0;
-        currentCount = 0;
-        do {
-            List<com.ns.dataloading.entity.BohstpBonusHistory> bohstpBonusHistoryListmysql = bohstpBonusHistoryRepositorymysql.findBohstpBonusHistory(start, limit);
-            currentCount = bohstpBonusHistoryListmysql.size();
-            bohstpBonusHistoryListmysql.parallelStream().forEach(x ->
-            {
-                String query = utils.convertObjectToKeyValueString(x);
-                try {
-                    ResultSet rs = graph.query("rediscegraph", query);
-                } catch (Exception ex) {
-                    System.out.println(ex.toString());
-                }
-            });
-
-            start = start + currentCount;
-            System.out.println("BohstpBonusHistory Loaded");
-            System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-        }
-        while (currentCount == limit);
-
-        System.out.println("BohstpBonusHistory Loaded");
-
-
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-
-
-        List<com.ns.dataloading.entity.DistdccDailyCcDownloadFile> distdccDailyCcDownloadFiles = distdccDailyCcDownloadFilemysql.findAll();
-        Map<DistdccDailyCcDownloadFile, Long> distdccDailyCcDownloadFileLongMap = new HashMap<>();
-        distdccDailyCcDownloadFiles.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
+//        List<RunConfig> runConfigList = new ArrayList<>();
+//        runConfigList = runconfigmysql.findAll();
+//
+//        runConfigList.parallelStream().forEach(x ->
+//        {
+//            String query = utils.convertObjectToKeyValueString(x);
+//            try {
+//                ResultSet rs = graph.query("rediscegraph", query);
+//            } catch (Exception ex) {
+//                System.out.println(ex.toString());
+//            }
+//        });
+//        System.out.println("Run config loaded");
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//
+//        List<com.ns.dataloading.entity.RunLog> Runlogmysql = new ArrayList<>();
+//        Runlogmysql = runlogrepomysql.findAll();
+//
+//        Runlogmysql.parallelStream().forEach(x ->
+//        {
+//            String query = utils.convertObjectToKeyValueString(x);
+//            try {
+//                ResultSet rs = graph.query("rediscegraph", query);
+//            } catch (Exception ex) {
+//                System.out.println(ex.toString());
+//            }
+//        });
+//        System.out.println("Runlogloaded");
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//
+//
+//        List<com.ns.dataloading.entity.OrmstpOrder> orderlistmysql = new ArrayList<>();
+//        orderlistmysql = ordermysql.findAll();
+//        orderlistmysql.parallelStream().forEach(x ->
+//        {
+//            String query = utils.convertObjectToKeyValueString(x);
+//            try {
+//                ResultSet rs = graph.query("rediscegraph", query);
+//            } catch (Exception ex) {
+//                System.out.println(ex.toString());
+//            }
+//        });
+//        System.out.println("Orderloaded");
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//
+//        start = 0;
+//        currentCount = 0;
+//        do {
+//            List<com.ns.dataloading.entity.DsmstpDistributor> Distributorlistmysql = dsmstpDistributorRepositorymysql.findDsmstpDistributor(start, limit);
+//            currentCount = Distributorlistmysql.size();
+//            Distributorlistmysql.parallelStream().forEach(x ->
+//            {
+//                String query = utils.convertObjectToKeyValueString(x);
+//                try {
+//                    ResultSet rs = graph.query("rediscegraph", query);
+//                } catch (Exception ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            });
+//
+//            start = start + currentCount;
+//            System.out.println("DsmstpDistributor Loaded");
+//            System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//        }
+//        while (currentCount == limit);
+//
+//
+//        List<com.ns.dataloading.entity.BoqalpBonusQualification> boqalpBonusQualificationListmysql = bonusQualificationRepositorymysql.findAll();
+//
+//        boqalpBonusQualificationListmysql.parallelStream().forEach(x ->
+//        {
+//            String query = utils.convertObjectToKeyValueString(x);
+//            try {
+//                ResultSet rs = graph.query("rediscegraph", query);
+//            } catch (Exception ex) {
+//                System.out.println(ex.toString());
+//            }
+//        });
+//
+//        System.out.println("BoqalpBonusQualification Loaded");
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//
+//
+//        List<com.ns.dataloading.entity.FlcmppCompanyConfig> flcmppCompanyConfigListmysql = flcmppCompanyConfigmysql.findAll();
+//        flcmppCompanyConfigListmysql.parallelStream().forEach(x ->
+//        {
+//            String query = utils.convertObjectToKeyValueString(x);
+//            try {
+//                ResultSet rs = graph.query("rediscegraph", query);
+//            } catch (Exception ex) {
+//                System.out.println(ex.toString());
+//            }
+//        });
+//
+//        System.out.println("FlcmppCompanyConfig Loaded");
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//
+//
+//        start = 0;
+//        currentCount = 0;
+//        do {
+//            List<com.ns.dataloading.entity.BohstpBonusHistory> bohstpBonusHistoryListmysql = bohstpBonusHistoryRepositorymysql.findBohstpBonusHistory(start, limit);
+//            currentCount = bohstpBonusHistoryListmysql.size();
+//            bohstpBonusHistoryListmysql.parallelStream().forEach(x ->
+//            {
+//                String query = utils.convertObjectToKeyValueString(x);
+//                try {
+//                    ResultSet rs = graph.query("rediscegraph", query);
+//                } catch (Exception ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            });
+//
+//            start = start + currentCount;
+//            System.out.println("BohstpBonusHistory Loaded");
+//            System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//        }
+//        while (currentCount == limit);
+//
+//        System.out.println("BohstpBonusHistory Loaded");
+//
+//
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
 
 
-        System.out.println("DISTDCC_DailyCCDownloadFile Loaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//        List<com.ns.dataloading.entity.DistdccDailyCcDownloadFile> distdccDailyCcDownloadFiles = distdccDailyCcDownloadFilemysql.findAll();
+//        Map<DistdccDailyCcDownloadFile, Long> distdccDailyCcDownloadFileLongMap = new HashMap<>();
+//        distdccDailyCcDownloadFiles.parallelStream().forEach(x ->
+//        {
+//            String query = utils.convertObjectToKeyValueString(x);
+//            try {
+//                ResultSet rs = graph.query("rediscegraph", query);
+//            } catch (Exception ex) {
+//                System.out.println(ex.toString());
+//            }
+//        });
+//
+//
+//        System.out.println("DISTDCC_DailyCCDownloadFile Loaded");
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//
+//        List<com.ns.dataloading.entity.BofitpFitStartOrder> bofitpFitStartOrderList = bofitpFitStartOrderRepositorymysql.findAll();
+//
+//        bofitpFitStartOrderList.parallelStream().forEach(x ->
+//        {
+//            String query = utils.convertObjectToKeyValueString(x);
+//            try {
+//                ResultSet rs = graph.query("rediscegraph", query);
+//            } catch (Exception ex) {
+//                System.out.println(ex.toString());
+//            }
+//        });
+//
+//        System.out.println("BodtlpBonusDetail Loaded");
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
 
-        List<com.ns.dataloading.entity.BofitpFitStartOrder> bofitpFitStartOrderList = bofitpFitStartOrderRepositorymysql.findAll();
-
-        bofitpFitStartOrderList.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
-
-        System.out.println("BodtlpBonusDetail Loaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-
-        List<com.ns.dataloading.entity.DslevpDistributorLevels> dslevelp = new ArrayList<>();
-        dslevelp = dslevpDistributorLevelsRepositorymysql.findAll();
-
-        dslevelp.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
-        System.out.println("Dslev loaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-
+//        List<com.ns.dataloading.entity.DslevpDistributorLevels> dslevelp = new ArrayList<>();
+//        dslevelp = dslevpDistributorLevelsRepositorymysql.findAll();
+//
+//        dslevelp.parallelStream().forEach(x ->
+//        {
+//            String query = utils.convertObjectToKeyValueString(x);
+//            try {
+//                ResultSet rs = graph.query("rediscegraph", query);
+//            } catch (Exception ex) {
+//                System.out.println(ex.toString());
+//            }
+//        });
+//        System.out.println("Dslev loaded");
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//
         start = 0;
         currentCount = 0;
         do {
@@ -324,38 +324,44 @@ public class RepositoryCall {
         }
         while (currentCount == limit);
 
-        List<com.ns.dataloading.entity.BowqlpWhsQualOrdTrack> bowqlpWhsQualOrdTrackList = new ArrayList<>();
-        bowqlpWhsQualOrdTrackList = bowqlpWhsQualOrdTrackRepositorymysql.findAll();
+
+        start = 0;
+        currentCount = 0;
+        do {
+            List<com.ns.dataloading.entity.BowqlpWhsQualOrdTrack> bowqlpWhsQualOrdTrackList = bowqlpWhsQualOrdTrackRepositorymysql.findBowqlpWhsQualOrdTrack(start, limit);
+            currentCount = bowqlpWhsQualOrdTrackList.size();
+            bowqlpWhsQualOrdTrackList.parallelStream().forEach(x ->
+            {
+                String query = utils.convertObjectToKeyValueString(x);
+                try {
+                    ResultSet rs = graph.query("rediscegraph", query);
+                } catch (Exception ex) {
+                    System.out.println(ex.toString());
+                }
+            });
+
+            start = start + currentCount;
+            System.out.println("BowqlpWhsQualOrdTrack Loaded");
+            System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+        }
+        while (currentCount == limit);
 
 
-        bowqlpWhsQualOrdTrackList.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
-        System.out.println("BowqlpWhsQualOrdTrack loaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
-
-
-        List<com.ns.dataloading.entity.BomcfgGlobalMultMonthMoveupConfig> bomcfgGlobalMultMonthMoveupConfigslist = new ArrayList<>();
-        bomcfgGlobalMultMonthMoveupConfigslist = bomcfgGlobalMultMonthMoveupConfigRepositorymysql.findAll();
-
-
-        bomcfgGlobalMultMonthMoveupConfigslist.parallelStream().forEach(x ->
-        {
-            String query = utils.convertObjectToKeyValueString(x);
-            try {
-                ResultSet rs = graph.query("rediscegraph", query);
-            } catch (Exception ex) {
-                System.out.println(ex.toString());
-            }
-        });
-        System.out.println("BomcfgGlobalMultMonthMoveupConfig loaded");
-        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
+//        List<com.ns.dataloading.entity.BomcfgGlobalMultMonthMoveupConfig> bomcfgGlobalMultMonthMoveupConfigslist = new ArrayList<>();
+//        bomcfgGlobalMultMonthMoveupConfigslist = bomcfgGlobalMultMonthMoveupConfigRepositorymysql.findAll();
+//
+//
+//        bomcfgGlobalMultMonthMoveupConfigslist.parallelStream().forEach(x ->
+//        {
+//            String query = utils.convertObjectToKeyValueString(x);
+//            try {
+//                ResultSet rs = graph.query("rediscegraph", query);
+//            } catch (Exception ex) {
+//                System.out.println(ex.toString());
+//            }
+//        });
+//        System.out.println("BomcfgGlobalMultMonthMoveupConfig loaded");
+//        System.out.println("'''''''''''''''''''''''''''''''''''''''''''");
 
 
         List<com.ns.dataloading.entity.DspwvpWaiver> dspwvpWaiverList = new ArrayList<>();
